@@ -11,7 +11,7 @@ app.listen(PORT, () => {
 
 // 2. SETUP BOT
 // REPLACE THIS with your Token
-const bot = new Telegraf('8472338569:AAFjCmcaPNjuqdCG8Wr3YvSpXdjRC3kYeBY');
+const bot = new Telegraf('8472338569:AAHRT0shFIYFgDlX4YRnDAoFhw4VKArX-dI');
 
 bot.start((ctx) => {
     ctx.reply("Welcome! Click below to shop:", {
@@ -50,4 +50,5 @@ bot.launch();
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
+
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
