@@ -22,24 +22,35 @@ bot.start((ctx) => {
     });
 });
 
+// --- PASTE YOUR ADMIN ID HERE ---
+const ADMIN_ID = '1094362464'; // <--- Paste the number from @userinfobot here
+
 bot.on('web_app_data', async (ctx) => {
     try {
         const data = JSON.parse(ctx.message.web_app_data.data);
+        
         if (data.type === 'ORDER_UBAGS') {
             const { customer, cart, total } = data;
-            const itemsList = cart.map(i => `• ${i.title} (x${i.qty})`).join('\n');
             
+            // 1. Create the Receipt Text
+            const itemsList = cart.map(i => `• ${i.title} (x${i.qty})`).join('\n');
             const receipt = `
-✅ *ORDER RECEIVED*
+✅ *NEW ORDER*
 👤 ${customer.name}
 📱 ${customer.phone}
 
-🛒 *Order:*
+🛒 *Items:*
 ${itemsList}
 
 💰 *Total:* ${total} ETB
             `;
-            await ctx.replyWithMarkdown(receipt);
+
+            // 2. Send Receipt to the CUSTOMER (The person who clicked)
+            await ctx.replyWithMarkdown("Thank you! We received your order:\n" + receipt);
+
+            // 3. Send Notification to YOU (The Seller)
+            // We use telegram.sendMessage to message a specific ID
+            await bot.telegram.sendMessage(ADMIN_ID, "🔔 *YOU HAVE A NEW ORDER!* \n" + receipt, { parse_mode: 'Markdown' });
         }
     } catch (e) {
         console.error(e);
@@ -50,5 +61,4 @@ bot.launch();
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
-
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
