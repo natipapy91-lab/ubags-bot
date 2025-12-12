@@ -16,7 +16,7 @@ const bot = new Telegraf('8472338569:AAHRT0shFIYFgDlX4YRnDAoFhw4VKArX-dI');
 bot.start((ctx) => {
     ctx.reply("Welcome! Click below to shop:", {
         reply_markup: {
-            keyboard: [[{ text: "Shop Bags", web_app: { url: "https://classy-pothos-359340.netlify.app/" } }]],
+            keyboard: [[{ text: "Shop Bags", web_app: { url: "https://ubags-frontend.vercel.app/" } }]],
             resize_keyboard: true
         }
     });
@@ -61,4 +61,5 @@ bot.launch();
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
+
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
