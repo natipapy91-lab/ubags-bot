@@ -2,7 +2,7 @@ const { Telegraf } = require('telegraf');
 const express = require('express');
 
 // --- 1. CONFIGURATION (FILL THESE CAREFULLY) ---
-const BOT_TOKEN = '8472338569:AAHRT0shFIYFgDlX4YRnDAoFhw4VKArX-dI';     // (Your actual long code)
+const BOT_TOKEN = '8472338569:AAGRvwuhu0xYTf_u2OpfzoE0V23EP7zgV7s';     // (Your actual long code)
 const ADMIN_ID = '1094362464';        // (Your actual number)
 const SHOP_URL = 'https://ubags-frontend.vercel.app/';       // https://ubags-frontend.vercel.app
 
@@ -62,3 +62,4 @@ ${itemsList}
 
 
 bot.launch();
+
